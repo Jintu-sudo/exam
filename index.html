@@ -146,15 +146,24 @@
       min-height: 14px;
     }
 
+    /* Checkbox row fixed layout */
     .checkbox-row {
-      display: flex;
-      gap: 8px;
+      display: grid;
+      grid-template-columns: auto 1fr;
       align-items: flex-start;
+      gap: 8px;
       font-size: 0.8rem;
+      margin-top: 6px;
     }
 
     .checkbox-row input {
       margin-top: 2px;
+      width: 14px;
+      height: 14px;
+    }
+
+    .checkbox-row label {
+      margin: 0;
     }
 
     .checkbox-row a {
