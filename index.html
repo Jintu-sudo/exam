@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Registration Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      padding: 20px;
+    }
+
+    .container {
+      background: #ffffff;
+      max-width: 445px;
+      width: 100%;
+      border-radius: 18px;
+      padding: 28px 24px 24px;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.35);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      margin-bottom: 6px;
+      color: #0f172a;
+    }
+
+    .header p {
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    form {
+      display: grid;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    label {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #111827;
+    }
+
+    input, select {
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #d1d5db;
+      font-size: 0.9rem;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.08s;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .helper {
+      font-size: 0.75rem;
+      color: #6b7280;
+    }
+
+    .error {
+      font-size: 0.75rem;
+      color: #dc2626;
+      margin-top: -2px;
+      min-height: 14px;
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.85rem;
+      margin-top: 6px;
+    }
+
+    .checkbox-row input {
+      width: 16px;
+      height: 16px;
+      margin-top: 3px;
+    }
+
+    button {
+      margin-top: 8px;
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+      cursor: pointer;
+      transition: transform 0.08s ease, box-shadow 0.15s ease, filter 0.15s ease;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.5);
+    }
+
+    button:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.55);
+    }
+
+    button:active {
+      transform: translateY(1px);
+      box-shadow: 0 7px 16px rgba(37, 99, 235, 0.45);
+    }
+
+    .success-message {
+      display: none;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: #ecfdf3;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+
+    .footer-text {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    .footer-text a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .footer-text a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 22px 18px 18px;
+      }
+
+      .header h1 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Create Your Account</h1>
+      <p>Fill in the details below to register.</p>
+    </header>
+
+    <form id="registrationForm" novalidate>
+      <div class="field-row">
+        <div class="field">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" placeholder="first_name" required />
+          <div class="error" id="firstNameError"></div>
+        </div>
+        <div class="field">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" placeholder="last_name" required />
+          <div class="error" id="lastNameError"></div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="you@mail.com" required />
+        <div class="error" id="emailError"></div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="password" required />
+          <div class="helper">Min 6 characters</div>
+          <div class="error" id="passwordError"></div>
+        </div>
+
+        <div class="field">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" placeholder="Repeat password" required />
+          <div class="error" id="confirmPasswordError"></div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="phone">Phone (optional)</label>
+        <input type="tel" id="phone" placeholder="" />
+        <div class="error" id="phoneError"></div>
+      </div>
+
+      <div class="field">
+        <label for="country">Country</label>
+        <select id="country" required>
+          <option value="">Select your country</option>
+          <option value="India">India</option>
+          <option value="USA">United States</option>
+          <option value="UK">United Kingdom</option>
+          <option value="Canada">Canada</option>
+          <option value="Australia">Australia</option>
+          <option value="Other">Other</option>
+        </select>
+        <div class="error" id="countryError"></div>
+      </div>
+
+      <div class="checkbox-row">
+        <input type="checkbox" id="terms" />
+        <label for="terms">
+          I agree to the <a href="#">Terms &amp; Conditions</a> and <a href="#">Privacy Policy</a>.
+        </label>
+      </div>
+      <div class="error" id="termsError"></div>
+
+      <button type="submit">Register</button>
+
+      <div class="success-message" id="successMessage">
+        ✅ Registration successful! (This is a demo — data is not actually saved.)
+      </div>
+
+      <div class="footer-text">
+        Already have an account?
+        <a href="#">Log in</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById("registrationForm");
+
+    function setError(id, message) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = message || "";
+    }
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // Clear previous errors
+      [
+        "firstNameError",
+        "lastNameError",
+        "emailError",
+        "passwordError",
+        "confirmPasswordError",
+        "phoneError",
+        "countryError",
+        "termsError",
+      ].forEach((id) => setError(id, ""));
+
+      let isValid = true;
+
+      const firstName = document.getElementById("firstName").value.trim();
+      const lastName = document.getElementById("lastName").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+      const phone = document.getElementById("phone").value.trim();
+      const country = document.getElementById("country").value;
+      const terms = document.getElementById("terms").checked;
+
+      if (!firstName) {
+        setError("firstNameError", "First name is required.");
+        isValid = false;
+      }
+
+      if (!lastName) {
+        setError("lastNameError", "Last name is required.");
+        isValid = false;
+      }
+
+      if (!email) {
+        setError("emailError", "Email is required.");
+        isValid = false;
+      } else {
+        const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+        if (!emailPattern.test(email)) {
+          setError("emailError", "Please enter a valid email.");
+          isValid = false;
+        }
+      }
+
+      if (!password) {
+        setError("passwordError", "Password is required.");
+        isValid = false;
+      } else if (password.length < 6) {
+        setError("passwordError", "Password must be at least 6 characters.");
+        isValid = false;
+      }
+
+      if (!confirmPassword) {
+        setError("confirmPasswordError", "Please confirm your password.");
+        isValid = false;
+      } else if (password !== confirmPassword) {
+        setError("confirmPasswordError", "Passwords do not match.");
+        isValid = false;
+      }
+
+      if (phone && !/^[0-9+\-\s]{7,20}$/.test(phone)) {
+        setError("phoneError", "Please enter a valid phone number.");
+        isValid = false;
+      }
+
+      if (!country) {
+        setError("countryError", "Please select your country.");
+        isValid = false;
+      }
+
+      if (!terms) {
+        setError("termsError", "You must agree to the terms.");
+        isValid = false;
+      }
+
+      const successMessage = document.getElementById("successMessage");
+
+      if (isValid) {
+        successMessage.style.display = "block";
+
+        // For a real app, send data to server here:
+        // fetch('/register', { method: 'POST', body: JSON.stringify({...}) })
+
+        // Optional: reset form after short delay
+        setTimeout(() => {
+          form.reset();
+        }, 500);
+      } else {
+        successMessage.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>
