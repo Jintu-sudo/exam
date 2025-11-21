@@ -17,33 +17,189 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #1e293b, #0f172a);
-      padding: 20px;
-    }
-
-    .container {
-      background: #ffffff;
-      max-width: 445px;
-      width: 100%;
-      border-radius: 18px;
-      padding: 28px 24px 24px;
-      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.35);
-    }
-
-    .header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .header h1 {
-      font-size: 1.6rem;
-      margin-bottom: 6px;
+      background: radial-gradient(circle at top left, #38bdf8 0, transparent 55%),
+                  radial-gradient(circle at bottom right, #a855f7 0, transparent 55%),
+                  linear-gradient(135deg, #020617, #020617);
+      padding: 24px;
       color: #0f172a;
     }
 
-    .header p {
+    .wrapper {
+      max-width: 900px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    /* Left side info panel */
+    .info-panel {
+      position: relative;
+      border-radius: 22px;
+      padding: 26px 24px;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(15,23,42,0.9), rgba(30,64,175,0.9));
+      color: #e5e7eb;
+      box-shadow: 0 22px 55px rgba(15,23,42,0.7);
+    }
+
+    .info-panel::before {
+      content: "";
+      position: absolute;
+      inset: -80px;
+      background:
+        radial-gradient(circle at 10% 0, rgba(248,250,252,0.22), transparent 65%),
+        radial-gradient(circle at 90% 100%, rgba(129,230,217,0.25), transparent 60%);
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .info-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      gap: 32px;
+    }
+
+    .app-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.7);
+      border: 1px solid rgba(148,163,184,0.4);
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #e5e7eb;
+      width: fit-content;
+    }
+
+    .app-badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 12px rgba(34,197,94,0.9);
+    }
+
+    .info-title {
+      font-size: 1.7rem;
+      font-weight: 650;
+      line-height: 1.25;
+      margin-top: 14px;
+      color: #f9fafb;
+    }
+
+    .info-subtitle {
+      margin-top: 8px;
       font-size: 0.9rem;
-      color: #6b7280;
+      color: #cbd5f5;
+      max-width: 340px;
+    }
+
+    .feature-list {
+      margin-top: 22px;
+      display: grid;
+      gap: 10px;
+      font-size: 0.86rem;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .feature-icon {
+      margin-top: 2px;
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      background: rgba(15,23,42,0.72);
+      border: 1px solid rgba(148,163,184,0.5);
+    }
+
+    .mini-stat {
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px dashed rgba(148,163,184,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: #d1d5db;
+    }
+
+    .mini-pill {
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: rgba(15,23,42,0.7);
+    }
+
+    /* Right side form container */
+    .container {
+      background: rgba(15,23,42,0.95);
+      border-radius: 22px;
+      max-width: 450px;
+      width: 100%;
+      padding: 26px 22px 22px;
+      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(148,163,184,0.5);
+      backdrop-filter: blur(18px);
+      color: #e5e7eb;
+    }
+
+    .container::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 22px;
+      border-top: 1px solid rgba(248,250,252,0.08);
+      border-left: 1px solid rgba(248,250,252,0.06);
+      pointer-events: none;
+    }
+
+    .header {
+      text-align: left;
+      margin-bottom: 18px;
+    }
+
+    .header h1 {
+      font-size: 1.45rem;
+      margin-bottom: 6px;
+      color: #f9fafb;
+    }
+
+    .header p {
+      font-size: 0.85rem;
+      color: #9ca3af;
+    }
+
+    .step-indicator {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      font-size: 0.78rem;
+      color: #9ca3af;
+    }
+
+    .step-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #38bdf8;
     }
 
     form {
@@ -59,24 +215,60 @@
     }
 
     label {
-      font-size: 0.9rem;
+      font-size: 0.82rem;
       font-weight: 500;
-      color: #111827;
+      color: #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    label span.optional {
+      font-weight: 400;
+      font-size: 0.72rem;
+      color: #9ca3af;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-prefix {
+      position: absolute;
+      left: 10px;
+      font-size: 0.78rem;
+      color: #6b7280;
+      pointer-events: none;
     }
 
     input, select {
-      padding: 10px 12px;
+      width: 100%;
+      padding: 9px 11px;
+      padding-left: 34px;
       border-radius: 10px;
-      border: 1px solid #d1d5db;
+      border: 1px solid rgba(55,65,81,0.9);
       font-size: 0.9rem;
-      transition: border-color 0.2s, box-shadow 0.2s, transform 0.08s;
+      background: rgba(15,23,42,0.95);
+      color: #e5e7eb;
+      transition: border-color 0.18s, box-shadow 0.18s, transform 0.08s, background 0.18s;
+    }
+
+    select {
+      padding-left: 11px;
+    }
+
+    input::placeholder {
+      color: #6b7280;
     }
 
     input:focus, select:focus {
       outline: none;
-      border-color: #2563eb;
-      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 1px rgba(56,189,248,0.6), 0 0 0 8px rgba(56,189,248,0.08);
       transform: translateY(-1px);
+      background: rgba(15,23,42,1);
     }
 
     .field-row {
@@ -86,14 +278,13 @@
     }
 
     .helper {
-      font-size: 0.75rem;
-      color: #6b7280;
+      font-size: 0.74rem;
+      color: #9ca3af;
     }
 
     .error {
-      font-size: 0.75rem;
-      color: #dc2626;
-      margin-top: -2px;
+      font-size: 0.73rem;
+      color: #f97373;
       min-height: 14px;
     }
 
@@ -101,62 +292,73 @@
       display: flex;
       align-items: flex-start;
       gap: 8px;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       margin-top: 6px;
+      color: #d1d5db;
     }
 
     .checkbox-row input {
-      width: 16px;
-      height: 16px;
-      margin-top: 3px;
+      width: 15px;
+      height: 15px;
+      margin-top: 2px;
+      accent-color: #38bdf8;
+    }
+
+    .checkbox-row a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+
+    .checkbox-row a:hover {
+      text-decoration: underline;
     }
 
     button {
-      margin-top: 8px;
+      margin-top: 6px;
       width: 100%;
       padding: 10px 14px;
       border-radius: 999px;
       border: none;
       font-size: 0.95rem;
       font-weight: 600;
-      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      background: linear-gradient(135deg, #38bdf8, #6366f1);
       color: white;
       cursor: pointer;
       transition: transform 0.08s ease, box-shadow 0.15s ease, filter 0.15s ease;
-      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.5);
+      box-shadow: 0 14px 35px rgba(37, 99, 235, 0.7);
     }
 
     button:hover {
-      filter: brightness(1.05);
+      filter: brightness(1.03);
       transform: translateY(-1px);
-      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.55);
+      box-shadow: 0 18px 40px rgba(37, 99, 235, 0.8);
     }
 
     button:active {
-      transform: translateY(1px);
-      box-shadow: 0 7px 16px rgba(37, 99, 235, 0.45);
+      transform: translateY(0px) scale(0.99);
+      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.7);
     }
 
     .success-message {
       display: none;
       margin-top: 12px;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       padding: 8px 10px;
       border-radius: 10px;
-      background: #ecfdf3;
-      color: #166534;
-      border: 1px solid #bbf7d0;
+      background: rgba(22,163,74,0.12);
+      color: #bbf7d0;
+      border: 1px solid rgba(34,197,94,0.7);
     }
 
     .footer-text {
-      margin-top: 10px;
+      margin-top: 12px;
       text-align: center;
-      font-size: 0.8rem;
-      color: #6b7280;
+      font-size: 0.78rem;
+      color: #9ca3af;
     }
 
     .footer-text a {
-      color: #2563eb;
+      color: #38bdf8;
       text-decoration: none;
       font-weight: 500;
     }
@@ -165,98 +367,184 @@
       text-decoration: underline;
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 820px) {
+      .wrapper {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .info-panel {
+        display: none; /* Hide left panel on smaller screens to keep it clean */
+      }
+
       .container {
-        padding: 22px 18px 18px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 16px;
+      }
+
+      .container {
+        padding: 20px 16px 16px;
       }
 
       .header h1 {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
+      }
+
+      .field-row {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header class="header">
-      <h1>Create Your Account</h1>
-      <p>Fill in the details below to register.</p>
-    </header>
+  <div class="wrapper">
+    <!-- Left info card -->
+    <section class="info-panel">
+      <div class="info-inner">
+        <div>
+          <div class="app-badge">
+            <span class="app-badge-dot"></span>
+            <span>New here?</span>
+          </div>
+          <h2 class="info-title">Join our community in a few simple steps.</h2>
+          <p class="info-subtitle">
+            Create your account once and use it across all our services: projects, courses, and more.
+          </p>
 
-    <form id="registrationForm" novalidate>
-      <div class="field-row">
-        <div class="field">
-          <label for="firstName">First Name</label>
-          <input type="text" id="firstName" placeholder="first_name" required />
-          <div class="error" id="firstNameError"></div>
-        </div>
-        <div class="field">
-          <label for="lastName">Last Name</label>
-          <input type="text" id="lastName" placeholder="last_name" required />
-          <div class="error" id="lastNameError"></div>
-        </div>
-      </div>
-
-      <div class="field">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" placeholder="you@mail.com" required />
-        <div class="error" id="emailError"></div>
-      </div>
-
-      <div class="field-row">
-        <div class="field">
-          <label for="password">Password</label>
-          <input type="password" id="password" placeholder="password" required />
-          <div class="helper">Min 6 characters</div>
-          <div class="error" id="passwordError"></div>
+          <div class="feature-list">
+            <div class="feature-item">
+              <div class="feature-icon">✓</div>
+              <div>Secure authentication with strong password validation.</div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">✓</div>
+              <div>Access from any device, anywhere in the world.</div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">✓</div>
+              <div>Update your profile details anytime later.</div>
+            </div>
+          </div>
         </div>
 
-        <div class="field">
-          <label for="confirmPassword">Confirm Password</label>
-          <input type="password" id="confirmPassword" placeholder="Repeat password" required />
-          <div class="error" id="confirmPasswordError"></div>
+        <div class="mini-stat">
+          <span>Trusted by <strong>2,500+</strong> users</span>
+          <span class="mini-pill">Takes &lt; 1 minute</span>
         </div>
       </div>
+    </section>
 
-      <div class="field">
-        <label for="phone">Phone (optional)</label>
-        <input type="tel" id="phone" placeholder="" />
-        <div class="error" id="phoneError"></div>
-      </div>
+    <!-- Right form card -->
+    <div class="container">
+      <header class="header">
+        <h1>Create your account</h1>
+        <p>Fill in the details below to get started.</p>
+        <div class="step-indicator">
+          <span class="step-dot"></span>
+          Step 1 of 1 &mdash; Basic details
+        </div>
+      </header>
 
-      <div class="field">
-        <label for="country">Country</label>
-        <select id="country" required>
-          <option value="">Select your country</option>
-          <option value="India">India</option>
-          <option value="USA">United States</option>
-          <option value="UK">United Kingdom</option>
-          <option value="Canada">Canada</option>
-          <option value="Australia">Australia</option>
-          <option value="Other">Other</option>
-        </select>
-        <div class="error" id="countryError"></div>
-      </div>
+      <form id="registrationForm" novalidate>
+        <div class="field-row">
+          <div class="field">
+            <label for="firstName">First Name</label>
+            <div class="input-wrapper">
+              <span class="input-prefix">👤</span>
+              <input type="text" id="firstName" placeholder="FirstName" required />
+            </div>
+            <div class="error" id="firstNameError"></div>
+          </div>
+          <div class="field">
+            <label for="lastName">Last Name</label>
+            <div class="input-wrapper">
+              <span class="input-prefix">👤</span>
+              <input type="text" id="lastName" placeholder="LastName" required />
+            </div>
+            <div class="error" id="lastNameError"></div>
+          </div>
+        </div>
 
-      <div class="checkbox-row">
-        <input type="checkbox" id="terms" />
-        <label for="terms">
-          I agree to the <a href="#">Terms &amp; Conditions</a> and <a href="#">Privacy Policy</a>.
-        </label>
-      </div>
-      <div class="error" id="termsError"></div>
+        <div class="field">
+          <label for="email">Email Address</label>
+          <div class="input-wrapper">
+            <span class="input-prefix"></span>
+            <input type="email" id="email" placeholder="you@mail.com" required />
+          </div>
+          <div class="error" id="emailError"></div>
+        </div>
 
-      <button type="submit">Register</button>
+        <div class="field-row">
+          <div class="field">
+            <label for="password">Password</label>
+            <div class="input-wrapper">
+              <span class="input-prefix">🔒</span>
+              <input type="password" id="password" placeholder="Choose a password" required />
+            </div>
+            <div class="helper">At least 6 characters</div>
+            <div class="error" id="passwordError"></div>
+          </div>
 
-      <div class="success-message" id="successMessage">
-        ✅ Registration successful! (This is a demo — data is not actually saved.)
-      </div>
+          <div class="field">
+            <label for="confirmPassword">Confirm Password</label>
+            <div class="input-wrapper">
+              <span class="input-prefix">✔</span>
+              <input type="password" id="confirmPassword" placeholder="Repeat password" required />
+            </div>
+            <div class="error" id="confirmPasswordError"></div>
+          </div>
+        </div>
 
-      <div class="footer-text">
-        Already have an account?
-        <a href="#">Log in</a>
-      </div>
-    </form>
+        <div class="field">
+          <label for="phone">Phone <span class="optional">(optional)</span></label>
+          <div class="input-wrapper">
+            <span class="input-prefix">📱</span>
+            <input type="tel" id="phone" placeholder="" />
+          </div>
+          <div class="error" id="phoneError"></div>
+        </div>
+
+        <div class="field">
+          <label for="country">Country</label>
+          <select id="country" required>
+            <option value="">Select your country</option>
+            <option value="India">India</option>
+            <option value="USA">United States</option>
+            <option value="UK">United Kingdom</option>
+            <option value="Canada">Canada</option>
+            <option value="Australia">Australia</option>
+            <option value="Other">Other</option>
+          </select>
+          <div class="error" id="countryError"></div>
+        </div>
+
+        <div class="checkbox-row">
+          <input type="checkbox" id="terms" />
+          <label for="terms">
+            I agree to the
+            <a href="#">Terms &amp; Conditions</a>
+            and
+            <a href="#">Privacy Policy</a>.
+          </label>
+        </div>
+        <div class="error" id="termsError"></div>
+
+        <button type="submit">Create account</button>
+
+        <div class="success-message" id="successMessage">
+          ✅ Registration successful! (Demo only — data is not actually saved.)
+        </div>
+
+        <div class="footer-text">
+          Already have an account?
+          <a href="#">Log in</a>
+        </div>
+      </form>
+    </div>
   </div>
 
   <script>
@@ -270,7 +558,6 @@
     form.addEventListener("submit", function (e) {
       e.preventDefault();
 
-      // Clear previous errors
       [
         "firstNameError",
         "lastNameError",
@@ -350,10 +637,6 @@
       if (isValid) {
         successMessage.style.display = "block";
 
-        // For a real app, send data to server here:
-        // fetch('/register', { method: 'POST', body: JSON.stringify({...}) })
-
-        // Optional: reset form after short delay
         setTimeout(() => {
           form.reset();
         }, 500);
